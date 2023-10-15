@@ -16,13 +16,10 @@ AllCops:
     - 'node_modules/**/*'
     - 'script/**/*'
     - 'tmp/**/*'
-
 Layout/LineLength:
   Max: 120
   AllowedPatterns:
     - '\s*# .+'
-  Exclude:
-    - 'config/initializers/simple_form/**/*'
 Metrics/AbcSize:
   Enabled: false
 Metrics/BlockLength:
