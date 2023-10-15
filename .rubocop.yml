@@ -1,0 +1,46 @@
+require:
+  - rubocop-capybara
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-slim
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2
+  Exclude:
+    - 'bin/{bundle,dev,rails,rake,setup}'
+    - 'db/schema.rb'
+    - 'lib/templates/slim/scaffold/**/*'
+    - 'node_modules/**/*'
+    - 'script/**/*'
+    - 'tmp/**/*'
+
+Layout/LineLength:
+  Max: 120
+  AllowedPatterns:
+    - '\s*# .+'
+  Exclude:
+    - 'config/initializers/simple_form/**/*'
+Metrics/AbcSize:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Rails/I18nLocaleAssignment:
+  Enabled: false
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+Rake/Desc:
+  Exclude:
+    - 'lib/tasks/**/*'
+Style/AsciiComments:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/MethodCallWithArgsParentheses:
+  EnforcedStyle: require_parentheses
+Style/NumberedParametersLimit:
+  Enabled: false
