@@ -8,8 +8,6 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    aasm (5.5.0)
-      concurrent-ruby (~> 1.0)
     actioncable (7.1.1)
       actionpack (= 7.1.1)
       activesupport (= 7.1.1)
@@ -171,6 +169,9 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
+    importmap-rails (1.2.1)
+      actionpack (>= 6.0.0)
+      railties (>= 6.0.0)
     io-console (0.6.0)
     irb (1.8.3)
       rdoc
@@ -429,7 +430,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  aasm
   annotate
   bootsnap
   bootstrap
@@ -442,6 +442,7 @@ DEPENDENCIES
   faraday-retry
   html2slim!
   i18n-tasks
+  importmap-rails
   jbuilder
   jsbundling-rails
   pg
