@@ -9,12 +9,17 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 Dotenv::Railtie.load
+autoload :ApplicationContainer, './app/lib/application_container'
 
 module AssignmentFunboxRails
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
     config.generators { |g| g.test_framework :rspec }
+    config.autoload_paths << Rails.root.join('app/lib').to_s
+    config.autoload_paths << Rails.root.join('app/services').to_s
+    config.cache_store = :redis_cache_store, { url: ApplicationContainer[:redis].connection[:id].to_s }
+    config.active_job.queue_adapter = :sidekiq
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
