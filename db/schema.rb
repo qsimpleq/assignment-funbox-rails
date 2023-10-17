@@ -40,13 +40,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_16_091645) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["base_currency_id"], name: "index_currency_rate_sources_on_base_currency_id"
-    t.index ["name"], name: "index_currency_rate_sources_on_name", unique: true
+    t.index ["name", "base_currency_id"], name: "index_currency_rate_sources_on_name_and_base_currency_id", unique: true
     t.index ["url"], name: "index_currency_rate_sources_on_url", unique: true
   end
 
   create_table "currency_rates", force: :cascade do |t|
     t.decimal "value"
     t.decimal "manual_value"
+    t.datetime "manual_value_expired_at"
     t.integer "nominal"
     t.bigint "currency_id", null: false
     t.bigint "currency_rate_fetch_id", null: false

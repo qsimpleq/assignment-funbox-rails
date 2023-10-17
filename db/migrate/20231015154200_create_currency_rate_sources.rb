@@ -9,7 +9,7 @@ class CreateCurrencyRateSources < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
-    add_index :currency_rate_sources, :name, unique: true
+    add_index :currency_rate_sources, %i[name base_currency_id], unique: true
     add_index :currency_rate_sources, :url, unique: true
   end
 end

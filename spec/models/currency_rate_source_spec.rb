@@ -13,9 +13,9 @@
 #
 # Indexes
 #
-#  index_currency_rate_sources_on_base_currency_id  (base_currency_id)
-#  index_currency_rate_sources_on_name              (name) UNIQUE
-#  index_currency_rate_sources_on_url               (url) UNIQUE
+#  index_currency_rate_sources_on_base_currency_id           (base_currency_id)
+#  index_currency_rate_sources_on_name_and_base_currency_id  (name,base_currency_id) UNIQUE
+#  index_currency_rate_sources_on_url                        (url) UNIQUE
 #
 # Foreign Keys
 #
