@@ -2,6 +2,7 @@
 
 module FetchCurrencyRateService
   class CbrDailyByRub
+    extend FetchCurrencyRateService::Builder
     include FetchCurrencyRateService::Base
 
     NAME = 'cbr-xml-daily.ru'

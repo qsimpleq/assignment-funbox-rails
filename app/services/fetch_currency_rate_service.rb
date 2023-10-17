@@ -4,6 +4,12 @@ module FetchCurrencyRateService
   class Error < StandardError
   end
 
+  class RunAll
+    def self.perform
+      FetchCurrencyRateService::CbrDailyByRub.perform
+    end
+  end
+
   module Base
     attr_reader :url, :errors, :result, :base_currency, :currency_rate_source
 
@@ -133,5 +139,13 @@ module FetchCurrencyRateService
     end
 
     def response_processing; end
+  end
+
+  module Builder
+    def perform
+      instance = new
+      instance.perform
+      instance
+    end
   end
 end
