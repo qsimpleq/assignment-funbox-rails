@@ -16,11 +16,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_16_091645) do
 
   create_table "currencies", force: :cascade do |t|
     t.string "name"
-    t.string "code"
+    t.string "num_code"
+    t.string "char_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["code"], name: "index_currencies_on_code", unique: true
-    t.index ["name"], name: "index_currencies_on_name", unique: true
+    t.index ["char_code"], name: "index_currencies_on_char_code", unique: true
+    t.index ["num_code"], name: "index_currencies_on_num_code", unique: true
   end
 
   create_table "currency_rate_fetches", force: :cascade do |t|

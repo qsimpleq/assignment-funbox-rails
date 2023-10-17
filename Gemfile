@@ -17,6 +17,7 @@ gem 'sprockets-rails' # The original asset pipeline for Rails [https://github.co
 gem 'stimulus-rails' # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'turbo-rails' # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 
+gem 'activerecord-import'
 gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'bootstrap'
 gem 'connection_pool'
