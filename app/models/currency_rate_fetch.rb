@@ -20,5 +20,6 @@
 #  fk_rails_...  (currency_rate_source_id => currency_rate_sources.id)
 #
 class CurrencyRateFetch < ApplicationRecord
-  belongs_to :currency_rate_source
+  belongs_to :currency_rate_source, inverse_of: :currency_rate_fetches
+  has_many :currency_rates, inverse_of: :currency_rate_fetch, dependent: :destroy
 end

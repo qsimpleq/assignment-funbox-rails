@@ -26,5 +26,5 @@
 #
 class CurrencyRate < ApplicationRecord
   belongs_to :currency
-  belongs_to :currency_rate_fetch
+  belongs_to :currency_rate_fetch, inverse_of: :currency_rates
 end
