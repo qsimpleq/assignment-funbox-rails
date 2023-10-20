@@ -1,2 +1,22 @@
-h1 CurrencyRates#index
-p Find me in app/views/currency_rates/index.html.slim
+h1.container.text-center = t('.header')
+hr
+.container
+  - now = DateTime.now
+  - @rates.each do |rate|
+    .row
+      .col.text-end
+        .row
+          .col
+            = rate.nominal
+          .col-2.text-start[title="#{rate.currency.name}"]
+            = rate.currency.char_code
+      .col-1.text-center = t('.per')
+      .col
+        .row
+          .col-3.text-end
+            - unless rate.currency_force_rate
+              = rate.value
+            - else
+              = rate.currency_force_rate
+          .col[title="#{rate.currency_rate_fetch.currency_rate_source.currency.name}"]
+            = rate.currency_rate_fetch.currency_rate_source.currency.char_code

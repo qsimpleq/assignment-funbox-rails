@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_16_091645) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_19_121222) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_16_091645) do
     t.datetime "updated_at", null: false
     t.index ["char_code"], name: "index_currencies_on_char_code", unique: true
     t.index ["num_code"], name: "index_currencies_on_num_code", unique: true
+  end
+
+  create_table "currency_force_rates", force: :cascade do |t|
+    t.decimal "value"
+    t.datetime "expired_at", null: false
+    t.bigint "currency_rate_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["currency_rate_id"], name: "index_currency_force_rates_on_currency_rate_id"
   end
 
   create_table "currency_rate_fetches", force: :cascade do |t|
@@ -46,8 +55,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_16_091645) do
 
   create_table "currency_rates", force: :cascade do |t|
     t.decimal "value"
-    t.decimal "manual_value"
-    t.datetime "manual_value_expired_at"
     t.integer "nominal"
     t.bigint "currency_id", null: false
     t.bigint "currency_rate_fetch_id", null: false
@@ -57,6 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_16_091645) do
     t.index ["currency_rate_fetch_id"], name: "index_currency_rates_on_currency_rate_fetch_id"
   end
 
+  add_foreign_key "currency_force_rates", "currency_rates"
   add_foreign_key "currency_rate_fetches", "currency_rate_sources"
   add_foreign_key "currency_rate_sources", "currencies", column: "base_currency_id"
   add_foreign_key "currency_rates", "currencies"

@@ -4,15 +4,13 @@
 #
 # Table name: currency_rates
 #
-#  id                      :bigint           not null, primary key
-#  manual_value            :decimal(, )
-#  manual_value_expired_at :datetime
-#  nominal                 :integer
-#  value                   :decimal(, )
-#  created_at              :datetime         not null
-#  updated_at              :datetime         not null
-#  currency_id             :bigint           not null
-#  currency_rate_fetch_id  :bigint           not null
+#  id                     :bigint           not null, primary key
+#  nominal                :integer
+#  value                  :decimal(, )
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  currency_id            :bigint           not null
+#  currency_rate_fetch_id :bigint           not null
 #
 # Indexes
 #
@@ -27,4 +25,5 @@
 class CurrencyRate < ApplicationRecord
   belongs_to :currency
   belongs_to :currency_rate_fetch, inverse_of: :currency_rates
+  has_one :currency_force_rate, inverse_of: :currency_rate, dependent: :destroy
 end

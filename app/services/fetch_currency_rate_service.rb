@@ -82,7 +82,6 @@ module FetchCurrencyRateService
         currency_rates << {
           currency_id: currency[:currency_id],
           currency_rate_fetch_id: @currency_rate_fetch.id,
-          manual_value: currency[:manual_value],
           nominal: currency[:nominal],
           value: currency[:value]
         }

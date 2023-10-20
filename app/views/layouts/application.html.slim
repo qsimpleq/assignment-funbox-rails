@@ -8,5 +8,20 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_importmap_tags
-  body
-    = yield
+  body.d-flex.flex-column.h-100
+    .container
+      .py-2.border-bottom
+        .navbar
+          .container
+            .row.w-100.ms-2
+              .col.text-end
+                a.navbar-brand href = root_path
+                  = t('.home')
+              .col.text-start
+                a.navbar-brand href = '/admin'
+                  = t('.admin')
+
+    main.mt-4.mb-5.pb-5
+      .container
+        .p-4.border.shadow.bg-white.rounded-3
+          = yield

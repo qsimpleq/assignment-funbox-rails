@@ -1,0 +1,5 @@
+ru:
+  currency_rates:
+    index:
+      header: Курсы валют
+      per: за
